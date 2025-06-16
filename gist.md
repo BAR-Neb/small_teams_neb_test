@@ -418,9 +418,9 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 	)
 	weaponDef.impulsefactor = 0.8
 	damages((weaponDef.burst or 1) / (ref.burst + 1))
-	weaponDef.burst = ref.burst + 1
+	weaponDef.burst = 4
+	weaponDef.burstrate = 0.1
 	local ratio = (ref.reloadtime / weaponDef.reloadtime) * (ref.range / weaponDef.range)
-	weaponDef.sprayangle = ref.sprayangle * math.sqrt(ratio)
 end
 
 -- Gauss
