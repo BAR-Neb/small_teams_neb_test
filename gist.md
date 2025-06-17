@@ -424,7 +424,7 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
 	weaponDef.size = 3
-	weapondDef.soundhit = "xplomed5"
+	weaponDef.soundhit = "xplomed5"
 	weapondDef.soundhitwet = "splshbig"
 	weapondDef.soundstart = "mavgun4"
 	weaponDef.weaponvelocity = 750
