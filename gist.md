@@ -419,7 +419,6 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 		"cylindertargeting", "energypershot", "impactonly", "tolerance", "predictboost", "weaponvelocity", "sprayangle",
 		"range", "reloadtime"
 	)
-
 	weaponDef.impulsefactor = 0.8
 	weaponDef.burst = 4
 	weaponDef.burstrate = 0.1
