@@ -312,8 +312,6 @@ end
 
 unit("armwar")
 costs(1.2, 0, 0, 300)
-unitDef.health = neat(unitDef.health * 1.25, 25)
-unitDef.idleautoheal = 10
 unitDef.speed = 61
 weapon("armwar_laser")
 weaponDef.range = 280
@@ -330,8 +328,8 @@ weaponDef.range = neat(weaponDef.range * 0.92, 1)
 
 unit("armamex")
 unitDef.buildtime = 3600
-unitDef.energycost = 6000,
-unitDef.energyupkeep = 0,
+unitDef.energycost = 6000
+unitDef.energyupkeep = 0
 unitDef.cancloak = false
 unitDef.health = neat(unitDef.health * 1.25, 25)
 unitDef.explodeas = "mediumBuildingExplosionGeneric"
@@ -354,7 +352,7 @@ unitDef.health = neat(unitDef.health * 1.3333, 25)
 for _, wname in ipairs { "cortruck_aa", "cortruck_missile" } do
 	weapon(wname)
 	weaponDef.areaofeffect = UnitDefs.corstorm.weapondefs.cor_bot_rocket.areaofeffect + 2
-	weaponDef.edgeeffectiveness = 0.8,
+	weaponDef.edgeeffectiveness = 0.8
 	weaponDef.burst = 3
 	weaponDef.burstrate = 0.375
 	weaponDef.reloadtime = 4
@@ -423,7 +421,6 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 		"range", "reloadtime"
 	)
 	weaponDef.impulsefactor = 0.8
-	damages(0.25)
 	weaponDef.burst = 4
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
@@ -431,6 +428,7 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 	weaponDef.weaponvelocity = 750
 	local ratio = (ref.reloadtime / weaponDef.reloadtime) * (ref.range / weaponDef.range)
 	weaponDef.sprayangle = ref.sprayangle * math.sqrt(ratio)
+	damages(0.25)
 end
 
 -- Gauss
