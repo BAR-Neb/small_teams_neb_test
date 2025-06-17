@@ -415,6 +415,7 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 		"soundhitwet", "soundstart",
 		"burstrate", "beamburst", "beamtime", "burst",
 		"cylindertargeting", "energypershot", "impactonly", "tolerance", "predictboost", "weaponvelocity", "sprayangle"
+		"range", "reloadtime"
 	)
 	weaponDef.impulsefactor = 0.8
 	damages((weaponDef.burst or 1) / (ref.burst + 1))
