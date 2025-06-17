@@ -213,9 +213,11 @@ end
 unit("armpw")
 costs(1, 0, 0, 132)
 unitDef.speed = neat(unitDef.speed * 1.08)
+unitDef.health = 323
 
 unit("armflash")
 unitDef.speed = neat(unitDef.speed * 1.08)
+unitDef.health = 638
 
 unit("armkam")
 weapon("emg")
@@ -224,9 +226,18 @@ weaponDef.weaponvelocity = neat(weaponDef.weaponvelocity * 1.1)
 weaponDef.firetolerance = 3600
 
 unit("corlevlr")
-unitDef.speed = neat(unitDef.speed * 1.1)
+costs(0.8)
+unitDef.health = neat(unitDef.health * 0.8, 25)
+unitDef.speed = neat(unitDef.speed * 1.25)
 weapon("corlevlr_weapon")
-weaponDef.range = neat(weaponDef.range * 0.92)
+weaponDef.range = neat(weaponDef.range * 0.95)
+
+unit("legcen")
+costs(0.66)
+unitDef.health = neat(unitDef.health * 0.66, 25)
+
+unit("legkark")
+unitDef.speed = neat(unitDef.speed * 1.25)
 
 -- This gives ground-to-ground capabilities to AA weapons (though pitifully weak).
 -- The true intent is to add a short-range point defense as a swapped weapon load.
@@ -240,7 +251,7 @@ for name, wname in pairs { armrl = "armrl_missile", armcir = "arm_cir", corrl = 
 	unitDef.weapons[1].onlytargetcategory = "NOTSUB"
 	weapon(wname)
 	local salvo = (weaponDef.burst or 1) * (weaponDef.projectiles or 1)
-	weaponDef.damage.default = neat((20 + 0.2 * weaponDef.damage.vtol * salvo) / salvo)
+	weaponDef.damage.default = neat((20 + 0.1 * weaponDef.damage.vtol * salvo) / salvo)
 end
 
 --------------------------------------------------------------------------------
@@ -310,11 +321,32 @@ end
 -- T1.5 is not a reified game mechanic but a classification schema for units.
 -- They are more expensive, more powerful, and have better resistance to EMP.
 
+unit("legadvsolar")
+unitDef.health = 800
+unitDef.energycost = 5000
+unitDef.metalcost = 1180
+unitDef.energymake = 215
+unitDef.buildtime = 38000
+
+unit("armadvsolar")
+unitDef.buildtime = 28000
+unitDef.health = 1130
+unitDef.energycost = 5950
+unitDef.metalcost = 860
+unitDef.energymake = 160
+
+unit("coradvsolar")
+unitDef.health = 1200
+unitDef.buildtime = 30000
+unitDef.energycost = 4760
+unitDef.metalcost = 910
+unitDef.energymake = 160
+
 unit("armwar")
 costs(1.2, 0, 0, 300)
 unitDef.speed = 61
 weapon("armwar_laser")
-weaponDef.burst = 1
+weaponDef.burst = 2
 weaponDef.range = 280
 damages(1.25)
 
@@ -369,20 +401,23 @@ weaponDef = unitDef.weapondefs.hllt_bottom
 weaponDef.range = neat(weaponDef.range + 50)
 damages(1.125)
 
+unit("legt15mex")
+unitDef.metalcost = 220
+
 --------------------------------------------------------------------------------
 -- Cortex bots -----------------------------------------------------------------
 
 unit("corak")
-costs(0.8888)
-unitDef.health = neat(unitDef.health * 0.8888, 25)
+costs(0.8)
+unitDef.health = neat(unitDef.health * 0.8, 25)
 weaponDef = unitDef.weapondefs.gator_laser
-weaponDef.range = neat(weaponDef.range * 1.05)
+weaponDef.range = 215
 
 unit("corroach")
 costs(0.5, 0, -2000, -2000)
 unitDef.maxwaterdepth = 16
 unitDef.movementclass = "BOT1"
-unitDef.radardistance = UnitDefs.armflea.sightdistance + 30
+unitDef.radardistance = UnitDefs.armflea.sightdistance + 100
 unitDef.radaremitheight = 18
 unitDef.speed = neat(unitDef.speed * 1.3333)
 unitDef.explodeas = "mediumExplosionGenericSelfd"
@@ -400,6 +435,12 @@ for name, def in ipairs(UnitDefs) do
 end
 unit("corlab")
 unitDef.buildoptions[#unitDef.buildoptions + 1] = "corroach"
+
+unit("corstorm")
+weapon("cor_bot_rocket")
+weaponDef.burst = 3
+weaponDef.burstrate = 0.2
+damages(0.34)
 
 --------------------------------------------------------------------------------
 -- Weapon conversions ----------------------------------------------------------
@@ -421,18 +462,28 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1", armr
 		"range", "reloadtime"
 	)
 	weaponDef.impulsefactor = 0.8
-	weaponDef.burst = weaponDef.burst * 4
+	weaponDef.burst = weaponDef.burst * 2
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
-	weaponDef.size = 2
+	weaponDef.size = 2.5
 	weaponDef.soundhit = "xplomed5"
 	weaponDef.soundhitwet = "splshbig"
 	weaponDef.soundstart = "mavgun4"
 	weaponDef.weaponvelocity = 750
 	local ratio = (ref.reloadtime / weaponDef.reloadtime) * (ref.range / weaponDef.range)
-	weaponDef.sprayangle = ref.sprayangle * math.sqrt(ratio)
+	weaponDef.sprayangle = (ref.sprayangle * math.sqrt(ratio) ) / 2
 	damages(0.25)
 end
+
+-- Adjust Razorback HEMG to be more epic
+unit("armraz")
+weapon("mech_rapidlaser")
+weaponDef.soundhitdry = ""
+weaponDef.soundhitwet = "sizzle"
+weaponDef.soundstart = "lasfirerc"
+weaponDef.burst = 24
+weaponDef.burstrate = 0.025
+weaponDef.size = 1.75
 
 -- Gauss
 ref = UnitDefs.armmav.weapondefs.armmav_weapon
