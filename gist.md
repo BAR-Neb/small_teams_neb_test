@@ -314,6 +314,7 @@ unit("armwar")
 costs(1.2, 0, 0, 300)
 unitDef.speed = 61
 weapon("armwar_laser")
+weaponDef.burst = 1
 weaponDef.range = 280
 damages(1.25)
 
@@ -408,7 +409,7 @@ unitDef.buildoptions[#unitDef.buildoptions + 1] = "corroach"
 
 -- HEMG
 ref = UnitDefs.armkam.weapondefs.emg
-for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
+for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1", armraz = "mech_rapidlaser" } do
 	unit(name)
 	weapon(wname).name = "Heavy EMG"
 	copy(weaponDef,
@@ -420,7 +421,7 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 		"range", "reloadtime"
 	)
 	weaponDef.impulsefactor = 0.8
-	weaponDef.burst = 4
+	weaponDef.burst = weaponDef.burst * 4
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
 	weaponDef.size = 3
