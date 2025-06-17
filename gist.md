@@ -321,21 +321,21 @@ end
 -- T1.5 is not a reified game mechanic but a classification schema for units.
 -- They are more expensive, more powerful, and have better resistance to EMP.
 
-unit("legadvsolar")
+unit("legadvsol")
 unitDef.health = 800
 unitDef.energycost = 5000
 unitDef.metalcost = 1180
 unitDef.energymake = 215
 unitDef.buildtime = 38000
 
-unit("armadvsolar")
+unit("armadvsol")
 unitDef.buildtime = 28000
 unitDef.health = 1130
 unitDef.energycost = 5950
 unitDef.metalcost = 860
 unitDef.energymake = 160
 
-unit("coradvsolar")
+unit("coradvsol")
 unitDef.health = 1200
 unitDef.buildtime = 30000
 unitDef.energycost = 4760
