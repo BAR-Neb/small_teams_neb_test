@@ -406,7 +406,7 @@ unitDef.buildoptions[#unitDef.buildoptions + 1] = "corroach"
 
 -- HEMG
 ref = UnitDefs.armkam.weapondefs.emg
-for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
+for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1", armraz = "mech_rapidlaser" } do
 	unit(name)
 	weapon(wname).name = "Heavy EMG"
 	copy(weaponDef,
