@@ -414,7 +414,7 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 		"corethickness", "explosiongenerator", "intensity", "laserflaresize", "rgbcolor", "thickness", "size",
 		"soundhitwet", "soundstart",
 		"burstrate", "beamburst", "beamtime", "burst",
-		"cylindertargeting", "energypershot", "impactonly", "tolerance", "predictboost", "weaponvelocity", "sprayangle"
+		"cylindertargeting", "energypershot", "impactonly", "tolerance", "predictboost", "weaponvelocity", "sprayangle",
 		"range", "reloadtime"
 	)
 	weaponDef.impulsefactor = 0.8
