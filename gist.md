@@ -356,7 +356,7 @@ for _, wname in ipairs { "cortruck_aa", "cortruck_missile" } do
 	weaponDef.burst = 3
 	weaponDef.burstrate = 0.375
 	weaponDef.reloadtime = 4
-	weaponDef.damage = neat(weaponDef.damage * 1.33, 1)
+	weaponDef.damage[default] = neat(weaponDef.damage[default] * 1.33)
 end
 
 unit("corexp")
