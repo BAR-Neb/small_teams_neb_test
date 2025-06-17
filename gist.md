@@ -356,7 +356,6 @@ for _, wname in ipairs { "cortruck_aa", "cortruck_missile" } do
 	weaponDef.burst = 3
 	weaponDef.burstrate = 0.375
 	weaponDef.reloadtime = 4
-	weaponDef.damage[default] = neat(weaponDef.damage[default] * 1.33)
 end
 
 unit("corexp")
@@ -420,11 +419,15 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 		"cylindertargeting", "energypershot", "impactonly", "tolerance", "predictboost", "weaponvelocity", "sprayangle",
 		"range", "reloadtime"
 	)
+
 	weaponDef.impulsefactor = 0.8
 	weaponDef.burst = 4
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
 	weaponDef.size = 3
+	weapondDef.soundhit = "xplomed5"
+	weapondDef.soundhitwet = "splshbig"
+	weapondDef.soundstart = "mavgun4"
 	weaponDef.weaponvelocity = 750
 	local ratio = (ref.reloadtime / weaponDef.reloadtime) * (ref.range / weaponDef.range)
 	weaponDef.sprayangle = ref.sprayangle * math.sqrt(ratio)
