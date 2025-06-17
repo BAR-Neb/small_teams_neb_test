@@ -424,7 +424,7 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1", armr
 	weaponDef.burst = weaponDef.burst * 4
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
-	weaponDef.size = 3
+	weaponDef.size = 2
 	weaponDef.soundhit = "xplomed5"
 	weaponDef.soundhitwet = "splshbig"
 	weaponDef.soundstart = "mavgun4"
