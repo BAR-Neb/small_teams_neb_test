@@ -424,7 +424,6 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
 	weaponDef.size = 3
-	weaponDef.spread = 
 	weaponDef.weaponvelocity = 750
 	local ratio = (ref.reloadtime / weaponDef.reloadtime) * (ref.range / weaponDef.range)
 	weaponDef.sprayangle = ref.sprayangle * math.sqrt(ratio)
