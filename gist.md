@@ -279,13 +279,13 @@ for _, faction in ipairs { "arm", "cor", "leg" } do
 	end
 	for _, factory in ipairs { "alab", "avp", "aap", "asy" } do
 		if unit(faction .. factory) then
-			costs(1, -500, 2000, 5000)
+			costs(1, -1000, 2000, 5000)
 			unitDef.workertime = neat(unitDef.workertime * 5)
 		end
 	end
 	for _, factory in ipairs { "gant", "gantuw", "shltx", "shltxuw" } do
 		if unit(faction .. factory) then
-			costs(1.5, 1000, 10000, 2000)
+			costs(1.5, -3000, 0, 0)
 			unitDef.workertime = neat(unitDef.workertime * 7.5, 500)
 		end
 	end
@@ -314,54 +314,59 @@ unit("armwar")
 costs(1.2, 0, 0, 300)
 unitDef.health = neat(unitDef.health * 1.25, 25)
 unitDef.idleautoheal = 10
-unitDef.speed = neat(unitDef.speed * 1.3333)
+unitDef.speed = 61
 weapon("armwar_laser")
-weaponDef.range = neat(weaponDef.range - 30)
+weaponDef.range = 280
 damages(1.25)
 
 unit("armjanus")
-costs(1.3333)
+costs(1.15, 0, 500, 0)
 unitDef.health = neat(unitDef.health * 1.1667, 25)
-unitDef.speed = neat(unitDef.speed * 1.125)
+unitDef.speed = neat(unitDef.speed * 1.15)
 weapon("janus_rocket")
-weaponDef.reloadtime = weaponDef.reloadtime * 0.925
+weaponDef.reloadtime = weaponDef.reloadtime * 0.8
+weaponDef.range = neat(weaponDef.range * 0.92, 1)
+
 
 unit("armamex")
-costs(1.125)
+unitDef.buildtime = 3600
+unitDef.energycost = 6000,
+unitDef.energyupkeep = 0,
+unitDef.cancloak = false
 unitDef.health = neat(unitDef.health * 1.25, 25)
 unitDef.explodeas = "mediumBuildingExplosionGeneric"
-unitDef.energymake = unitDef.cloakcost
-unitDef.radardistance = 1000
-unitDef.radaremitheight = 24
-unitDef.sightdistance = 200
+unitDef.energymake = 80
 
 unit("corthud")
-costs(2)
-unitDef.health = neat(unitDef.health * 2, 25)
-unitDef.speed = neat(unitDef.speed * 1.1667)
+costs(1.6)
+unitDef.health = 1450
+unitDef.speed = neat(unitDef.speed * 1.222)
 unitDef.turnrate = unitDef.turnrate * 1.05
 weapon("arm_ham")
 weaponDef.areaofeffect = neat(weaponDef.areaofeffect * 1.1667)
 weaponDef.burst = 2
-weaponDef.burstrate = 0.25
-weaponDef.reloadtime = weaponDef.reloadtime * 1.5
+weaponDef.burstrate = 0.2
+weaponDef.reloadtime = weaponDef.reloadtime * 1.25
 
 unit("cormist")
-costs(2)
+costs(1.5)
 unitDef.health = neat(unitDef.health * 1.3333, 25)
 for _, wname in ipairs { "cortruck_aa", "cortruck_missile" } do
 	weapon(wname)
 	weaponDef.areaofeffect = UnitDefs.corstorm.weapondefs.cor_bot_rocket.areaofeffect + 2
+	weaponDef.edgeeffectiveness = 0.8,
 	weaponDef.burst = 3
 	weaponDef.burstrate = 0.375
-	weaponDef.reloadtime = weaponDef.reloadtime * 2
+	weaponDef.reloadtime = 4
+	weaponDef.damage = neat(weaponDef.damage * 1.33, 1)
 end
 
 unit("corexp")
 costs(1.5)
-unitDef.health = neat(unitDef.health * 1.3333, 25)
+unitDef.health = neat(unitDef.health * 1.15, 25)
 unitDef.idleautoheal = 10
 unitDef.sightdistance = neat(unitDef.sightdistance * 1.5)
+unitDef.extractsmetal = 0.0013
 weaponDef = unitDef.weapondefs.hllt_bottom
 weaponDef.range = neat(weaponDef.range + 50)
 damages(1.125)
@@ -406,7 +411,7 @@ unitDef.buildoptions[#unitDef.buildoptions + 1] = "corroach"
 
 -- HEMG
 ref = UnitDefs.armkam.weapondefs.emg
-for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1", armraz = "mech_rapidlaser" } do
+for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1" } do
 	unit(name)
 	weapon(wname).name = "Heavy EMG"
 	copy(weaponDef,
@@ -418,9 +423,8 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1", armr
 		"range", "reloadtime"
 	)
 	weaponDef.impulsefactor = 0.8
-	damages((weaponDef.burst or 1) / (ref.burst + 1))
-
-	weaponDef.burst = weaponDef.burst * 2
+	damages(0.25)
+	weaponDef.burst = 4
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
 	weaponDef.size = 3
@@ -433,11 +437,10 @@ end
 ref = UnitDefs.armmav.weapondefs.armmav_weapon
 for name, wname in pairs { armham = "arm_ham" } do
 	unit(name)
-	costs(1.1) -- Not a neutral conversion.
 	weapon(wname).name = "Gauss Plasma Cannon"
 	copy(weaponDef, 'impulsefactor', 'weaponvelocity')
-	weaponDef.reloadtime = neat(weaponDef.reloadtime * 1.75, 0.01)
-	damages(1.75)
+	weaponDef.reloadtime = neat(weaponDef.reloadtime / 2, 0.01)
+	damages(0.5)
 end
 
 -- LSFR
