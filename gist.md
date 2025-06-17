@@ -420,7 +420,7 @@ for name, wname in pairs { armwar = "armwar_laser", armhlt = "arm_laserh1", armr
 	weaponDef.impulsefactor = 0.8
 	damages((weaponDef.burst or 1) / (ref.burst + 1))
 
-	weaponDef.burst = 4
+	weaponDef.burst = weaponDef.burst * 2
 	weaponDef.burstrate = 0.1
 	weaponDef.stages = 12
 	weaponDef.size = 3
