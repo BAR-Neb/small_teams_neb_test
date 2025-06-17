@@ -408,10 +408,9 @@ unitDef.metalcost = 220
 -- Cortex bots -----------------------------------------------------------------
 
 unit("corak")
-costs(0.8)
+costs(0.85)
 unitDef.health = neat(unitDef.health * 0.8, 25)
 weaponDef = unitDef.weapondefs.gator_laser
-weaponDef.range = 215
 
 unit("corroach")
 costs(0.5, 0, -2000, -2000)
