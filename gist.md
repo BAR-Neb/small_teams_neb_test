@@ -401,7 +401,7 @@ weaponDef = unitDef.weapondefs.hllt_bottom
 weaponDef.range = neat(weaponDef.range + 50)
 damages(1.125)
 
-unit("legt15mex")
+unit("legmext15")
 unitDef.metalcost = 220
 
 --------------------------------------------------------------------------------
